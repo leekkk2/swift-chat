@@ -27,7 +27,6 @@
 		7923F2A519E6BC533C0F2749 /* libPods-SwiftChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E954E88951117AE160D5618 /* libPods-SwiftChat.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		A98E989882C3A293A3C38335 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5D25C7B4CE6B3F2BED0CFCE0 /* PrivacyInfo.xcprivacy */; };
-		F9ACFB7A95231C4D17203673 /* libPods-SwiftChat-SwiftChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2010B02A49BCFD048093BFF4 /* libPods-SwiftChat-SwiftChatTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,9 +51,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SwiftChat/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SwiftChat/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = SwiftChat/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		2010B02A49BCFD048093BFF4 /* libPods-SwiftChat-SwiftChatTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SwiftChat-SwiftChatTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2245EBD3B65D1A5DC891B5C2 /* Pods-SwiftChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftChat.debug.xcconfig"; path = "Target Support Files/Pods-SwiftChat/Pods-SwiftChat.debug.xcconfig"; sourceTree = "<group>"; };
-		26F467DFA655DE557FFCBA1D /* Pods-SwiftChat-SwiftChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftChat-SwiftChatTests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftChat-SwiftChatTests/Pods-SwiftChat-SwiftChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3A19D3852CCBB38F001797C6 /* SwiftChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		3A19D3882CCE980A001797C6 /* TestAddBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAddBridge.swift; sourceTree = "<group>"; };
 		3A1B98C62E3F955600B6AEDF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,7 +70,6 @@
 		3AFE001D2E99999999999999 /* FilePasteModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilePasteModule.h; sourceTree = "<group>"; };
 		3AFE001E2E99999999999999 /* FilePasteModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilePasteModule.m; sourceTree = "<group>"; };
 		5D25C7B4CE6B3F2BED0CFCE0 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = SwiftChat/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		7C30B51B80BE1F65F927C2DD /* Pods-SwiftChat-SwiftChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftChat-SwiftChatTests.release.xcconfig"; path = "Target Support Files/Pods-SwiftChat-SwiftChatTests/Pods-SwiftChat-SwiftChatTests.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SwiftChat/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E6F3C08C1AEBDE360232922B /* Pods-SwiftChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftChat.release.xcconfig"; path = "Target Support Files/Pods-SwiftChat/Pods-SwiftChat.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -84,7 +80,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9ACFB7A95231C4D17203673 /* libPods-SwiftChat-SwiftChatTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +145,6 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				0E954E88951117AE160D5618 /* libPods-SwiftChat.a */,
-				2010B02A49BCFD048093BFF4 /* libPods-SwiftChat-SwiftChatTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -228,8 +222,6 @@
 			children = (
 				2245EBD3B65D1A5DC891B5C2 /* Pods-SwiftChat.debug.xcconfig */,
 				E6F3C08C1AEBDE360232922B /* Pods-SwiftChat.release.xcconfig */,
-				26F467DFA655DE557FFCBA1D /* Pods-SwiftChat-SwiftChatTests.debug.xcconfig */,
-				7C30B51B80BE1F65F927C2DD /* Pods-SwiftChat-SwiftChatTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -241,12 +233,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SwiftChatTests" */;
 			buildPhases = (
-				48A6DF09A26789EAC2E20A2F /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				A97351C04E99CA1A792881D6 /* [CP] Embed Pods Frameworks */,
-				0E1885BFB35E950AAE36E8BC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -378,23 +367,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		0E1885BFB35E950AAE36E8BC /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SwiftChat-SwiftChatTests/Pods-SwiftChat-SwiftChatTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SwiftChat-SwiftChatTests/Pods-SwiftChat-SwiftChatTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftChat-SwiftChatTests/Pods-SwiftChat-SwiftChatTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2EFD869F45294D63CA0BC82E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -403,52 +375,17 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SwiftChat/Pods-SwiftChat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SwiftChat/Pods-SwiftChat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftChat/Pods-SwiftChat-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		48A6DF09A26789EAC2E20A2F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SwiftChat-SwiftChatTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A97351C04E99CA1A792881D6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SwiftChat-SwiftChatTests/Pods-SwiftChat-SwiftChatTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SwiftChat-SwiftChatTests/Pods-SwiftChat-SwiftChatTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftChat-SwiftChatTests/Pods-SwiftChat-SwiftChatTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FA9CA29F8A1E78A32F0317DD /* [CP] Copy Pods Resources */ = {
@@ -459,9 +396,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SwiftChat/Pods-SwiftChat-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SwiftChat/Pods-SwiftChat-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -512,7 +453,6 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 26F467DFA655DE557FFCBA1D /* Pods-SwiftChat-SwiftChatTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -542,7 +482,6 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7C30B51B80BE1F65F927C2DD /* Pods-SwiftChat-SwiftChatTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -577,7 +516,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 64;
-				DEVELOPMENT_TEAM = BUA6W9H7T3;
+				DEVELOPMENT_TEAM = 2XBCJAM843;
 				ENABLE_BITCODE = NO;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = SwiftChat/Info.plist;
@@ -594,11 +533,12 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aws.swiftchat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sanva.swiftchat;
 				PRODUCT_NAME = SwiftChat;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftChat-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -618,7 +558,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 64;
-				DEVELOPMENT_TEAM = BUA6W9H7T3;
+				DEVELOPMENT_TEAM = 2XBCJAM843;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = SwiftChat/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SwiftChat;
@@ -634,11 +574,12 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aws.swiftchat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sanva.swiftchat;
 				PRODUCT_NAME = SwiftChat;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftChat-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,6";

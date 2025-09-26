@@ -11,6 +11,7 @@ import ChatScreen from './chat/ChatScreen.tsx';
 import { RouteParamList } from './types/RouteTypes.ts';
 import { AppProvider, useAppContext } from './history/AppProvider.tsx';
 import SettingsScreen from './settings/SettingsScreen.tsx';
+import NewSettingsScreen from './custom/settings/NewSettingsScreen.tsx'; // 导入新设置页面
 import Toast from 'react-native-toast-message';
 import TokenUsageScreen from './settings/TokenUsageScreen.tsx';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -58,7 +59,7 @@ const DrawerNavigator = () => {
       }}
       drawerContent={renderCustomDrawerContent}>
       <Drawer.Screen name="Bedrock" component={ChatScreen} />
-      <Drawer.Screen name="Settings" component={SettingsScreen} />
+      <Drawer.Screen name="Settings" component={NewSettingsScreen} />
     </Drawer.Navigator>
   );
 };
@@ -76,6 +77,20 @@ const AppNavigator = () => {
         component={TokenUsageScreen}
         options={{
           title: 'Usage',
+          contentStyle: {
+            height: isMac ? 66 : undefined,
+            backgroundColor: colors.background,
+          },
+          headerTitleAlign: 'center',
+          headerStyle: { backgroundColor: colors.background },
+          headerTintColor: colors.text,
+        }}
+      />
+      <Stack.Screen
+        name="NewSettings"
+        component={NewSettingsScreen}
+        options={{
+          title: '新设置',
           contentStyle: {
             height: isMac ? 66 : undefined,
             backgroundColor: colors.background,

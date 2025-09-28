@@ -1,3 +1,4 @@
+#import "OtaHotUpdate.h"
 #import "AppDelegate.h"
 #import "RCTNetworkingPatch.h"
 #import "RCTTextInputPatch.h"
@@ -66,7 +67,11 @@
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
-  return [self bundleURL];
+#if DEBUG
+  return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index"];
+#else
+  OtaHotUpdate.getBundle()  // -> Add this line
+#endif
 }
 
 - (NSURL *)bundleURL

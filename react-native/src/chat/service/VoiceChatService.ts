@@ -8,11 +8,11 @@ import {
   getCurrentVoiceSystemPrompt,
   getVoiceId,
   isTokenValid,
-  getTokenInfo,
   getRegion,
   getBedrockConfigMode,
   getBedrockApiKey,
-} from '../../storage/StorageUtils.ts';
+} from '../../custom/config/storage-override';
+import { getTokenInfo } from '../../storage/StorageUtils.ts';
 import { requestToken } from '../../api/bedrock-api.ts';
 import { TokenResponse } from '../../types/Chat.ts';
 

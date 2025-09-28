@@ -2,8 +2,24 @@ PODS:
   - boost (1.83.0)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.74.1)
+  - Firebase/CoreOnly (12.3.0):
+    - FirebaseCore (~> 12.3.0)
+  - FirebaseCore (12.3.0):
+    - FirebaseCoreInternal (~> 12.3.0)
+    - GoogleUtilities/Environment (~> 8.1)
+    - GoogleUtilities/Logger (~> 8.1)
+  - FirebaseCoreInternal (12.3.0):
+    - "GoogleUtilities/NSData+zlib (~> 8.1)"
   - fmt (9.1.0)
   - glog (0.3.5)
+  - GoogleUtilities/Environment (8.1.0):
+    - GoogleUtilities/Privacy
+  - GoogleUtilities/Logger (8.1.0):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Privacy
+  - "GoogleUtilities/NSData+zlib (8.1.0)":
+    - GoogleUtilities/Privacy
+  - GoogleUtilities/Privacy (8.1.0)
   - hermes-engine (0.74.1):
     - hermes-engine/Pre-built (= 0.74.1)
   - hermes-engine/Pre-built (0.74.1)
@@ -1282,6 +1298,9 @@ PODS:
     - React-utils (= 0.74.1)
   - RNCClipboard (1.14.1):
     - React-Core
+  - RNFBApp (23.4.0):
+    - Firebase/CoreOnly (= 12.3.0)
+    - React-Core
   - RNFileViewer (2.1.5):
     - React-Core
   - RNFS (2.20.0):
@@ -1425,6 +1444,7 @@ DEPENDENCIES:
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCClipboard (from `../node_modules/@react-native-clipboard/clipboard`)"
+  - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - RNFileViewer (from `../node_modules/react-native-file-viewer`)
   - RNFS (from `../node_modules/react-native-fs`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
@@ -1437,6 +1457,10 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Firebase
+    - FirebaseCore
+    - FirebaseCoreInternal
+    - GoogleUtilities
     - MMKV
     - MMKVCore
     - SocketRocket
@@ -1568,6 +1592,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCClipboard:
     :path: "../node_modules/@react-native-clipboard/clipboard"
+  RNFBApp:
+    :path: "../node_modules/@react-native-firebase/app"
   RNFileViewer:
     :path: "../node_modules/react-native-file-viewer"
   RNFS:
@@ -1591,8 +1617,12 @@ SPEC CHECKSUMS:
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
   DoubleConversion: 76ab83afb40bddeeee456813d9c04f67f78771b5
   FBLazyVector: 898d14d17bf19e2435cafd9ea2a1033efe445709
+  Firebase: f5439b235721ceeef14ca1f327c0da8e4e8556b5
+  FirebaseCore: ff47fe1ad3ab9ef66edd3e8bc4647b493d2067f8
+  FirebaseCoreInternal: a9e1ff270f217489d9258563b693d11a312903bf
   fmt: 4c2741a687cc09f0634a2e2c72a838b99f1ff120
   glog: c5d68082e772fa1c511173d6b30a9de2c05a69a2
+  GoogleUtilities: 00c88b9a86066ef77f0da2fab05f65d7768ed8e1
   hermes-engine: 16b8530de1b383cdada1476cf52d1b52f0692cbc
   MMKV: 817ba1eea17421547e01e087285606eb270a8dcb
   MMKVCore: af055b00e27d88cd92fad301c5fecd1ff9b26dd9
@@ -1652,6 +1682,7 @@ SPEC CHECKSUMS:
   React-utils: 67574b07bff4429fd6c4d43a7fad8254d814ee20
   ReactCommon: 64c64f4ae1f2debe3fab1800e00cb8466a4477b7
   RNCClipboard: 4598dae0fe33e2aa130d9d213e2007be78310266
+  RNFBApp: 8d27c7545e7e06d78974e204ff95f207a60a5cb2
   RNFileViewer: 4b5d83358214347e4ab2d4ca8d5c1c90d869e251
   RNFS: 89de7d7f4c0f6bafa05343c578f61118c8282ed8
   RNGestureHandler: 77ca8899a0bd9a9d948e74174ee401bbffa5e524
@@ -1664,6 +1695,6 @@ SPEC CHECKSUMS:
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   Yoga: 348f8b538c3ed4423eb58a8e5730feec50bce372
 
-PODFILE CHECKSUM: 740a9ebdc6a118806efe0b5681c710c15e52fce4
+PODFILE CHECKSUM: 9fdc44b2bcde2ec321f212c15b912e95192c4d01
 
 COCOAPODS: 1.16.2

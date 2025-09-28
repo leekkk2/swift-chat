@@ -12,39 +12,62 @@ import {
   getHardcodedOpenAIProxyEnabled
 } from './hardcoded-config';
 
+// 全局状态管理：当前选中的模型
+let currentSelectedTextModel: Model | null = null;
+let currentSelectedImageModel: Model | null = null;
+
 /**
  * 获取文本模型 - 覆写原有逻辑
- * 返回硬编码配置中的第一个模型作为默认模型
+ * 返回当前选中的模型，如果没有选中则返回第一个模型
  */
 export function getTextModel(): Model {
-  const hardcodedModels = getHardcodedOpenAIModels();
+  if (currentSelectedTextModel) {
+    return currentSelectedTextModel;
+  }
 
+  const hardcodedModels = getHardcodedOpenAIModels();
   // 转换为项目期望的 Model 格式
   const firstModel = hardcodedModels[0];
-  return {
+  const model = {
     modelId: firstModel.modelId,
     modelName: firstModel.modelName,
     inputCost: firstModel.inputCost,
     outputCost: firstModel.outputCost,
     contextLength: firstModel.contextLength,
     maxOutputTokens: firstModel.maxOutputTokens,
+    modelTag: 'OpenAICompatible', // 使用 OpenAICompatible 以支持自定义API URL
+    apiUrl: getHardcodedOpenAIApiUrl(), // 添加 API URL
+    apiKey: getHardcodedOpenAIApiKey(), // 添加 API Key
   };
+
+  currentSelectedTextModel = model;
+  return model;
 }
 
 /**
  * 获取图像模型 - 覆写原有逻辑
- * 暂时返回默认的图像模型配置
+ * 返回当前选中的图像模型，如果没有选中则返回默认模型
  */
 export function getImageModel(): Model {
+  if (currentSelectedImageModel) {
+    return currentSelectedImageModel;
+  }
+
   // 由于当前硬编码配置主要针对文本模型，这里返回一个默认的图像模型
-  return {
+  const model = {
     modelId: 'gemini-1.5-flash',
     modelName: 'Gemini 1.5 Flash (图像)',
     inputCost: 0.0001,
     outputCost: 0.0003,
     contextLength: 1000000,
     maxOutputTokens: 8192,
+    modelTag: 'OpenAICompatible', // 使用 OpenAICompatible 以支持自定义API URL
+    apiUrl: getHardcodedOpenAIApiUrl(), // 添加 API URL
+    apiKey: getHardcodedOpenAIApiKey(), // 添加 API Key
   };
+
+  currentSelectedImageModel = model;
+  return model;
 }
 
 /**
@@ -62,6 +85,9 @@ export function getAllModels(): AllModel {
     outputCost: model.outputCost,
     contextLength: model.contextLength,
     maxOutputTokens: model.maxOutputTokens,
+    modelTag: 'OpenAICompatible', // 使用 OpenAICompatible 以支持自定义API URL
+    apiUrl: getHardcodedOpenAIApiUrl(), // 添加 API URL
+    apiKey: getHardcodedOpenAIApiKey(), // 添加 API Key
   }));
 
   // 图像模型暂时使用单个默认模型
@@ -305,19 +331,19 @@ export function saveSystemPrompts(prompts: any[]): void {
 }
 
 /**
- * 保存文本模型 - 空实现（硬编码配置不需要保存）
+ * 保存文本模型 - 更新当前选中的模型
  */
 export function saveTextModel(model: Model): void {
-  // 硬编码配置不需要保存操作
-  console.log('saveTextModel called with hardcoded config - no action needed:', model.modelName);
+  currentSelectedTextModel = model;
+  console.log('saveTextModel: 已更新当前选中的文本模型:', model.modelName);
 }
 
 /**
- * 保存图像模型 - 空实现（硬编码配置不需要保存）
+ * 保存图像模型 - 更新当前选中的模型
  */
 export function saveImageModel(model: Model): void {
-  // 硬编码配置不需要保存操作
-  console.log('saveImageModel called with hardcoded config - no action needed:', model.modelName);
+  currentSelectedImageModel = model;
+  console.log('saveImageModel: 已更新当前选中的图像模型:', model.modelName);
 }
 
 /**

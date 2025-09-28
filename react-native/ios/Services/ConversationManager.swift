@@ -30,11 +30,24 @@ class ConversationManager {
     func initialize(region: String, accessKey: String, secretKey: String, sessionToken: String? = nil, apiKey: String? = nil) throws {
         guard !isInitialized else { return }
         // Initialize NovaSonic service
-        novaSonicService = NovaSonicService(region: region, accessKey: accessKey, secretKey: secretKey, sessionToken: sessionToken, apiKey: apiKey)
-        audioManager = novaSonicService?.audioManager
-        // Set up callbacks
+        let service = NovaSonicService(
+            region: region,
+            accessKey: accessKey,
+            secretKey: secretKey,
+            sessionToken: sessionToken,
+            apiKey: apiKey
+        )
+        novaSonicService = service
+        audioManager = service.audioManager
+        // Set up callbacks before attempting to initialize so errors can be surfaced.
         setupCallbacks()
-        
+
+        do {
+            try service.initializeClient()
+        } catch {
+            throw error
+        }
+
         isInitialized = true
     }
     

@@ -10,7 +10,7 @@ import {
   getBedrockApiKey,
   getRegion,
   getTextModel,
-} from '../storage/StorageUtils.ts';
+} from '../custom/config/storage-override';
 import { BedrockMessage } from '../chat/util/BedrockMessageConvertor.ts';
 import { isEnableThinking } from './bedrock-api.ts';
 

@@ -5,7 +5,12 @@
  */
 
 import { Model, AllModel } from '../../types/Chat.ts';
-import { getHardcodedOpenAIModels } from './hardcoded-config';
+import {
+  getHardcodedOpenAIModels,
+  getHardcodedOpenAIApiKey,
+  getHardcodedOpenAIApiUrl,
+  getHardcodedOpenAIProxyEnabled
+} from './hardcoded-config';
 
 /**
  * 获取文本模型 - 覆写原有逻辑
@@ -66,6 +71,172 @@ export function getAllModels(): AllModel {
     textModel: textModels,
     imageModel: imageModels,
   };
+}
+
+/**
+ * API 配置相关函数覆写
+ */
+
+/**
+ * 获取 API URL - 覆写原有逻辑
+ */
+export function getApiUrl(): string {
+  return getHardcodedOpenAIApiUrl();
+}
+
+/**
+ * 获取 API Key - 覆写原有逻辑
+ */
+export function getApiKey(): string {
+  return getHardcodedOpenAIApiKey();
+}
+
+/**
+ * 获取 OpenAI API Key - 覆写原有逻辑
+ */
+export function getOpenAIApiKey(): string {
+  return getHardcodedOpenAIApiKey();
+}
+
+/**
+ * 获取 DeepSeek API Key - 覆写原有逻辑
+ * 返回空字符串，因为我们使用 OpenAI 配置
+ */
+export function getDeepSeekApiKey(): string {
+  return '';
+}
+
+/**
+ * 获取 OpenAI 代理设置 - 覆写原有逻辑
+ */
+export function getOpenAIProxyEnabled(): boolean {
+  return getHardcodedOpenAIProxyEnabled();
+}
+
+/**
+ * 获取 Ollama API URL - 覆写原有逻辑
+ */
+export function getOllamaApiUrl(): string {
+  return '';
+}
+
+/**
+ * 获取 Ollama API Key - 覆写原有逻辑
+ */
+export function getOllamaApiKey(): string {
+  return '';
+}
+
+/**
+ * 获取 Bedrock 配置模式 - 覆写原有逻辑
+ */
+export function getBedrockConfigMode(): string {
+  return 'swiftchat'; // 使用 swiftchat 模式
+}
+
+/**
+ * 获取 Bedrock API Key - 覆写原有逻辑
+ */
+export function getBedrockApiKey(): string {
+  return '';
+}
+
+/**
+ * 获取区域设置 - 覆写原有逻辑
+ */
+export function getRegion(): string {
+  return 'us-east-1'; // 默认区域
+}
+
+/**
+ * 获取图像尺寸 - 覆写原有逻辑
+ */
+export function getImageSize(): string {
+  return '1024 x 1024';
+}
+
+/**
+ * 获取思考模式是否启用 - 覆写原有逻辑
+ */
+export function getThinkingEnabled(): boolean {
+  return false;
+}
+
+/**
+ * 保存 Token 信息 - 空实现
+ */
+export function saveTokenInfo(info: any): void {
+  console.log('saveTokenInfo called with hardcoded config - no action needed');
+}
+
+/**
+ * 获取最后的虚拟试衣图片文件 - 空实现
+ */
+export function getLastVirtualTryOnImgFile(): any {
+  return null;
+}
+
+/**
+ * 根据会话ID获取消息 - 空实现
+ */
+export function getMessagesBySessionId(sessionId: number): any[] {
+  return [];
+}
+
+/**
+ * 获取会话ID - 空实现
+ */
+export function getSessionId(): number {
+  return 1;
+}
+
+/**
+ * 保存当前图像系统提示 - 空实现
+ */
+export function saveCurrentImageSystemPrompt(prompt: any): void {
+  console.log('saveCurrentImageSystemPrompt called with hardcoded config - no action needed');
+}
+
+/**
+ * 保存当前系统提示 - 空实现
+ */
+export function saveCurrentSystemPrompt(prompt: any): void {
+  console.log('saveCurrentSystemPrompt called with hardcoded config - no action needed');
+}
+
+/**
+ * 保存当前语音系统提示 - 空实现
+ */
+export function saveCurrentVoiceSystemPrompt(prompt: any): void {
+  console.log('saveCurrentVoiceSystemPrompt called with hardcoded config - no action needed');
+}
+
+/**
+ * 保存最后的虚拟试衣图片文件 - 空实现
+ */
+export function saveLastVirtualTryOnImgFile(file: any): void {
+  console.log('saveLastVirtualTryOnImgFile called with hardcoded config - no action needed');
+}
+
+/**
+ * 保存消息列表 - 空实现
+ */
+export function saveMessageList(messages: any[]): void {
+  console.log('saveMessageList called with hardcoded config - no action needed');
+}
+
+/**
+ * 保存消息 - 空实现
+ */
+export function saveMessages(sessionId: number, messages: any[]): void {
+  console.log('saveMessages called with hardcoded config - no action needed');
+}
+
+/**
+ * 更新总使用量 - 空实现
+ */
+export function updateTotalUsage(usage: any): void {
+  console.log('updateTotalUsage called with hardcoded config - no action needed');
 }
 
 /**

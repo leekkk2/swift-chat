@@ -4,7 +4,7 @@ import {
   getImageModel,
   getImageSize,
   getRegion,
-} from '../storage/StorageUtils.ts';
+} from '../custom/config/storage-override';
 import { ImageInfo } from '../chat/util/BedrockMessageConvertor.ts';
 
 export const genImageWithAPIKey = async (

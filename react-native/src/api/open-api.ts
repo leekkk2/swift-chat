@@ -5,7 +5,7 @@ import {
   getOpenAIApiKey,
   getOpenAIProxyEnabled,
   getTextModel,
-} from '../storage/StorageUtils.ts';
+} from '../custom/config/storage-override';
 import {
   BedrockMessage,
   ImageContent,

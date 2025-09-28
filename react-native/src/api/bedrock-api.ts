@@ -23,7 +23,7 @@ import {
   getTextModel,
   getThinkingEnabled,
   saveTokenInfo,
-} from '../storage/StorageUtils.ts';
+} from '../custom/config/storage-override';
 import { saveImageToLocal } from '../chat/util/FileUtils.ts';
 import {
   BedrockMessage,

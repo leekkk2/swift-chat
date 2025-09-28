@@ -43,7 +43,6 @@ const CustomSendComponent: React.FC<CustomSendComponentProps> = ({
   let isShowSending = false;
   if (chatMode === ChatMode.Image) {
     isShowSending =
-      !isModelSupportUploadImages(chatMode) ||
       (systemPrompt != null && !isVirtualTryOn && selectedFiles.length > 0) ||
       (isVirtualTryOn && selectedFiles.length === 2) ||
       (systemPrompt == null && text && text!.length > 0) ||
@@ -150,10 +149,16 @@ const CustomSendComponent: React.FC<CustomSendComponentProps> = ({
 };
 
 const isModelSupportUploadImages = (chatMode: ChatMode): boolean => {
+  const imageModel = getImageModel();
+  if (!imageModel || !imageModel.modelId) {
+    console.error('isModelSupportUploadImages: 图像模型或modelId未定义');
+    return false;
+  }
+
   return (
     chatMode === ChatMode.Image &&
-    (getImageModel().modelId.includes('nova-canvas') ||
-      getImageModel().modelId.includes('stability.sd3'))
+    (imageModel.modelId.includes('nova-canvas') ||
+      imageModel.modelId.includes('stability.sd3'))
   );
 };
 

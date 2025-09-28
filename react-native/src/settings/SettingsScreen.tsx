@@ -120,9 +120,10 @@ function SettingsScreen(): React.JSX.Element {
   const [selectedTextModel, setSelectedTextModel] =
     useState<Model>(getTextModel);
   const [imageModels, setImageModels] = useState<Model[]>(allModel.imageModel);
-  const [selectedImageModel, setSelectedImageModel] = useState<string>(
-    getImageModel().modelId
-  );
+  const [selectedImageModel, setSelectedImageModel] = useState<string>(() => {
+    const imageModel = getImageModel();
+    return imageModel?.modelId || '';
+  });
   const [upgradeInfo, setUpgradeInfo] = useState<UpgradeInfo>(initUpgradeInfo);
   const [cost, setCost] = useState('0.00');
   const controllerRef = useRef<AbortController | null>(null);

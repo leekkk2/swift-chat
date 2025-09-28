@@ -13,8 +13,17 @@ export const genImageWithAPIKey = async (
   image?: ImageInfo,
   garmentImage?: ImageInfo
 ): Promise<ImageRes> => {
+  // 验证图像模型配置
+  const imageModel = getImageModel();
+  if (!imageModel || !imageModel.modelId) {
+    return {
+      image: '',
+      error: 'Image model configuration is invalid: modelId is missing',
+    };
+  }
+
   const bedrockApiKey = getBedrockApiKey();
-  const modelId = getImageModel().modelId;
+  const modelId = imageModel.modelId;
   const region = getRegion();
   const imageSize = getImageSize().split('x');
   const width = parseInt(imageSize[0].trim(), 10);

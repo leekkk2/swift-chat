@@ -184,8 +184,12 @@ const isNova = (): boolean => {
 };
 
 const isNovaCanvas = (): boolean => {
-  const imageModelId = getImageModel().modelId;
-  return imageModelId.includes('nova-canvas');
+  const imageModel = getImageModel();
+  if (!imageModel || !imageModel.modelId) {
+    console.error('isNovaCanvas: 图像模型或modelId未定义');
+    return false;
+  }
+  return imageModel.modelId.includes('nova-canvas');
 };
 
 export const isAllFileReady = (files: FileInfo[]) => {

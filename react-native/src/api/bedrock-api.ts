@@ -444,13 +444,21 @@ export const genImage = async (
     };
   }
   const url = getApiPrefix() + '/image';
+  const imageModel = getImageModel();
+  if (!imageModel || !imageModel.modelId) {
+    return {
+      image: '',
+      error: 'Image model configuration is invalid: modelId is missing',
+    };
+  }
+
   const imageSize = getImageSize().split('x');
   const width = imageSize[0].trim();
   const height = imageSize[1].trim();
   const bodyObject = {
     prompt: imagePrompt,
     refImages: images,
-    modelId: getImageModel().modelId,
+    modelId: imageModel.modelId,
     region: getRegion(),
     width: width,
     height: height,

@@ -49,22 +49,23 @@ export function getTextModel(): Model {
  * 返回当前选中的图像模型，如果没有选中则返回默认模型
  */
 export function getImageModel(): Model {
-  if (currentSelectedImageModel) {
+  if (currentSelectedImageModel && currentSelectedImageModel.modelId) {
     return currentSelectedImageModel;
   }
 
   // 使用 gemini-2.5-pro 作为图像模型
-  const model = {
+  const model: Model = {
     modelId: 'gemini-2.5-pro',
     modelName: 'Gemini 2.5 Pro',
-    inputCost: 0.002,
-    outputCost: 0.006,
-    contextLength: 1000000,
-    maxOutputTokens: 8192,
     modelTag: 'OpenAICompatible', // 使用 OpenAICompatible 以支持自定义API URL
     apiUrl: getHardcodedOpenAIApiUrl(), // 添加 API URL
     apiKey: getHardcodedOpenAIApiKey(), // 添加 API Key
   };
+
+  // 验证模型对象完整性
+  if (!model.modelId || !model.modelName || !model.modelTag) {
+    console.error('getImageModel: 模型对象缺少必需属性');
+  }
 
   currentSelectedImageModel = model;
   return model;

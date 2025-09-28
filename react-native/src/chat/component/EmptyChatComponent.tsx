@@ -12,7 +12,7 @@ import { ChatMode } from '../../types/Chat.ts';
 import { useNavigation } from '@react-navigation/native';
 import { RouteParamList } from '../../types/RouteTypes.ts';
 import { DrawerNavigationProp } from '@react-navigation/drawer';
-import { getImageModel, getTextModel } from '../../storage/StorageUtils.ts';
+import { getImageModel, getTextModel } from '../../custom/config/storage-override';
 import { useTheme, ColorScheme } from '../../theme';
 
 const isAndroid = Platform.OS === 'android';

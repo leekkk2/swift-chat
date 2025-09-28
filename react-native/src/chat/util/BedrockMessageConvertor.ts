@@ -7,7 +7,7 @@ import {
 import { getFileBytes, getFileTextContent } from './FileUtils.ts';
 import { EXTRA_DOCUMENT_FORMATS } from '../component/CustomAddFileComponent.tsx';
 import { getModelTag } from '../../utils/ModelUtils.ts';
-import { getTextModel } from '../../storage/StorageUtils.ts';
+import { getTextModel } from '../../custom/config/storage-override';
 
 export async function getBedrockMessagesFromChatMessages(
   messages: SwiftChatMessage[]

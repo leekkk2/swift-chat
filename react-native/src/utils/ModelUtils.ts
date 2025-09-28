@@ -1,6 +1,6 @@
 import { Model, ModelTag } from '../types/Chat.ts';
 import { DeepSeekModels } from '../storage/Constants.ts';
-import { getTextModel } from '../storage/StorageUtils.ts';
+import { getTextModel } from '../custom/config/storage-override';
 
 export function getModelTag(model: Model): string {
   if (model.modelTag) {

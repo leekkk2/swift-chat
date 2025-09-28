@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { getTextModel } from '../../storage/StorageUtils';
+import { getTextModel } from '../../custom/config/storage-override';
 import { getModelIcon } from '../../utils/ModelUtils.ts';
 import { useTheme } from '../../theme';
 

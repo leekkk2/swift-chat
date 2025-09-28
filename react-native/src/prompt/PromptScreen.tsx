@@ -15,7 +15,7 @@ import { RouteParamList } from '../types/RouteTypes.ts';
 import { SystemPrompt } from '../types/Chat.ts';
 import { showInfo } from '../chat/util/ToastUtils.ts';
 import { useAppContext } from '../history/AppProvider.tsx';
-import { getPromptId, getTextModel } from '../storage/StorageUtils.ts';
+import { getPromptId, getTextModel } from '../custom/config/storage-override';
 import { HeaderLeftView } from './HeaderLeftView.tsx';
 import { isMac } from '../App.tsx';
 import { useTheme, ColorScheme } from '../theme';

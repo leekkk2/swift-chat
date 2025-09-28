@@ -10,7 +10,7 @@ import {
   SystemPrompt,
 } from '../../types/Chat.ts';
 import { CustomAddFileComponent } from './CustomAddFileComponent.tsx';
-import { getImageModel, getTextModel } from '../../storage/StorageUtils.ts';
+import { getImageModel, getTextModel } from '../../custom/config/storage-override';
 import { useTheme, ColorScheme } from '../../theme';
 
 interface CustomSendComponentProps extends SendProps<SwiftChatMessage> {

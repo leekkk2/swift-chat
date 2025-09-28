@@ -23,7 +23,7 @@ import {
   saveTextModel,
   updateTextModelUsageOrder,
   getMergedModelOrder,
-} from '../../storage/StorageUtils';
+} from '../../custom/config/storage-override';
 import { useTheme, ColorScheme } from '../../theme';
 import { getModelIcon } from '../../utils/ModelUtils.ts';
 

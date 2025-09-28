@@ -28,7 +28,7 @@ import {
   Image as Img,
 } from 'react-native-compressor';
 import { isMac } from '../../App.tsx';
-import { getTextModel } from '../../storage/StorageUtils.ts';
+import { getTextModel } from '../../custom/config/storage-override';
 import { showInfo } from '../util/ToastUtils.ts';
 import { useTheme } from '../../theme';
 import { isAndroid } from '../../utils/PlatformUtils.ts';

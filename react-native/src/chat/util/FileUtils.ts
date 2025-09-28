@@ -1,7 +1,7 @@
 import RNFS from 'react-native-fs';
 import { Platform } from 'react-native';
 import { ChatMode, FileInfo, FileType } from '../../types/Chat.ts';
-import { getImageModel, getTextModel } from '../../storage/StorageUtils.ts';
+import { getImageModel, getTextModel } from '../../custom/config/storage-override';
 import { showInfo } from './ToastUtils.ts';
 
 export const saveImageToLocal = async (

@@ -19,7 +19,7 @@ import {
   getMessageList,
   getSessionId,
   updateMessageList,
-} from '../storage/StorageUtils.ts';
+} from '../custom/config/storage-override';
 import Dialog from 'react-native-dialog';
 import { useAppContext } from './AppProvider.tsx';
 import { trigger } from '../chat/util/HapticUtils.ts';

@@ -4,13 +4,21 @@
  * 将模型配置指向硬编码配置
  */
 
-import { Model, AllModel } from '../../types/Chat.ts';
+import { Model, AllModel, SwiftChatMessage, Chat, ChatMode, Usage } from '../../types/Chat.ts';
+import { MMKV } from 'react-native-mmkv';
 import {
   getHardcodedOpenAIModels,
   getHardcodedOpenAIApiKey,
   getHardcodedOpenAIApiUrl,
   getHardcodedOpenAIProxyEnabled
 } from './hardcoded-config';
+
+// 自定义持久化存储
+const customStorage = new MMKV();
+const keyPrefix = 'custom/';
+const messageListKey = keyPrefix + 'messageList';
+const sessionIdPrefix = keyPrefix + 'sessionId/';
+const currentSessionIdKey = keyPrefix + 'currentSessionId';
 
 // 全局状态管理：当前选中的模型
 let currentSelectedTextModel: Model | null = null;
@@ -204,17 +212,21 @@ export function getLastVirtualTryOnImgFile(): any {
 }
 
 /**
- * 根据会话ID获取消息 - 空实现
+ * 根据会话ID获取消息 - 持久化实现
  */
-export function getMessagesBySessionId(sessionId: number): any[] {
+export function getMessagesBySessionId(sessionId: number): SwiftChatMessage[] {
+  const messageStr = customStorage.getString(sessionIdPrefix + sessionId);
+  if (messageStr) {
+    return JSON.parse(messageStr) as SwiftChatMessage[];
+  }
   return [];
 }
 
 /**
- * 获取会话ID - 空实现
+ * 获取会话ID - 持久化实现
  */
 export function getSessionId(): number {
-  return 1;
+  return customStorage.getNumber(currentSessionIdKey) ?? 0;
 }
 
 /**
@@ -246,17 +258,52 @@ export function saveLastVirtualTryOnImgFile(file: any): void {
 }
 
 /**
- * 保存消息列表 - 空实现
+ * 保存消息列表 - 持久化实现
  */
-export function saveMessageList(messages: any[]): void {
-  console.log('saveMessageList called with hardcoded config - no action needed');
+export function saveMessageList(sessionId: number, firstMessage: SwiftChatMessage, chatMode: ChatMode): void {
+  // 获取现有的消息列表字符串
+  let allMessageStr = getMessageListStr();
+
+  // 创建新的聊天记录项
+  const currentMessageStr = JSON.stringify({
+    id: sessionId,
+    title: firstMessage.text.substring(0, 50).replaceAll('\n', ' '),
+    mode: chatMode.toString(),
+    timestamp: (firstMessage.createdAt as Date).getTime(),
+  });
+
+  // 添加到消息列表（原始格式：无开头的 [）
+  if (allMessageStr.length === 1) {
+    allMessageStr = currentMessageStr + allMessageStr;
+  } else {
+    allMessageStr = currentMessageStr + ',' + allMessageStr;
+  }
+
+  // 持久化保存
+  customStorage.set(messageListKey, allMessageStr);
+  customStorage.set(currentSessionIdKey, sessionId);
+  console.log('saveMessageList: 已保存聊天列表到持久化存储:', sessionId);
 }
 
 /**
- * 保存消息 - 空实现
+ * 保存消息 - 持久化实现
  */
-export function saveMessages(sessionId: number, messages: any[]): void {
-  console.log('saveMessages called with hardcoded config - no action needed');
+export function saveMessages(sessionId: number, messages: SwiftChatMessage[], usage?: Usage): void {
+  // 为第一条消息添加usage信息
+  if (messages.length > 0 && usage) {
+    messages[0].usage = usage;
+  }
+
+  // 清理其他消息的usage信息（只有第一条消息保存usage）
+  messages.forEach((message, index) => {
+    if (index !== 0 && 'usage' in message) {
+      delete message.usage;
+    }
+  });
+
+  // 持久化保存到存储
+  customStorage.set(sessionIdPrefix + sessionId, JSON.stringify(messages));
+  console.log('saveMessages: 已保存会话消息到持久化存储:', sessionId);
 }
 
 /**
@@ -264,6 +311,48 @@ export function saveMessages(sessionId: number, messages: any[]): void {
  */
 export function updateTotalUsage(usage: any): void {
   console.log('updateTotalUsage called with hardcoded config - no action needed');
+}
+
+/**
+ * 获取消息列表字符串 - 辅助函数
+ */
+function getMessageListStr(): string {
+  return customStorage.getString(messageListKey) ?? ']';
+}
+
+/**
+ * 获取消息列表 - 持久化实现
+ */
+export function getMessageList(): Chat[] {
+  return JSON.parse('[' + getMessageListStr()) as Chat[];
+}
+
+/**
+ * 删除指定会话的消息 - 持久化实现
+ */
+export function deleteMessagesBySessionId(sessionId: number): void {
+  // 删除会话消息
+  customStorage.delete(sessionIdPrefix + sessionId);
+
+  // 从消息列表中移除该会话
+  const chatList = getMessageList();
+  const filteredList = chatList.filter(chat => chat.id !== sessionId);
+
+  if (filteredList.length > 0) {
+    customStorage.set(messageListKey, JSON.stringify(filteredList).substring(1));
+  } else {
+    customStorage.delete(messageListKey);
+  }
+
+  console.log('deleteMessagesBySessionId: 已删除会话:', sessionId);
+}
+
+/**
+ * 更新消息列表 - 持久化实现（用于历史记录更新）
+ */
+export function updateMessageList(): void {
+  // 这个函数在原始实现中可能用于刷新，这里不需要特殊操作
+  console.log('updateMessageList: 消息列表已使用持久化存储');
 }
 
 /**

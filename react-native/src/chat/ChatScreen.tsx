@@ -312,7 +312,7 @@ function ChatScreen(): React.JSX.Element {
       setIsLoadingMessages(true);
       const msg = getMessagesBySessionId(initialSessionId);
       sessionIdRef.current = initialSessionId;
-      setUsage((msg[0] as SwiftChatMessage).usage);
+      setUsage(msg.length > 0 ? (msg[0] as SwiftChatMessage).usage : undefined);
       setSystemPrompt(null);
       saveCurrentSystemPrompt(null);
       saveCurrentVoiceSystemPrompt(null);

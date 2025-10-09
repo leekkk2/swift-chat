@@ -44,6 +44,7 @@ import {
   saveMessageList,
   saveMessages,
   updateTotalUsage,
+  getMessageList,
 } from '../custom/config/storage-override';
 import {
   ChatMode,
@@ -53,6 +54,7 @@ import {
   SwiftChatMessage,
   SystemPrompt,
   Usage,
+  Model,
 } from '../types/Chat.ts';
 import { useAppContext } from '../history/AppProvider.tsx';
 import { CustomHeaderRightButton } from './component/CustomHeaderRightButton.tsx';
@@ -77,7 +79,7 @@ import { HeaderOptions } from '@react-navigation/elements';
 
 const BOT_ID = 2;
 
-const createBotMessage = (mode: string) => {
+const createBotMessage = (mode: string, textModel: Model, imageModel: Model) => {
   return {
     _id: uuid.v4(),
     text: mode === ChatMode.Text ? textPlaceholder : imagePlaceholder,
@@ -86,9 +88,9 @@ const createBotMessage = (mode: string) => {
       _id: BOT_ID,
       name:
         mode === ChatMode.Text
-          ? getTextModel().modelName
-          : getImageModel().modelName,
-      modelTag: mode === ChatMode.Text ? getTextModel().modelTag : undefined,
+          ? textModel.modelName
+          : imageModel.modelName,
+      modelTag: mode === ChatMode.Text ? textModel.modelTag : undefined,
     },
   };
 };
@@ -105,8 +107,15 @@ function ChatScreen(): React.JSX.Element {
   const tapIndex = route.params?.tapIndex;
   const mode = route.params?.mode ?? currentMode;
   const modeRef = useRef(mode);
+
+  // 会话级模型状态管理
+  const [sessionTextModel, setSessionTextModel] = useState<Model>(getTextModel());
+  const [sessionImageModel, setSessionImageModel] = useState<Model>(getImageModel());
+  const sessionTextModelRef = useRef(sessionTextModel);
+  const sessionImageModelRef = useRef(sessionImageModel);
+
   const isNovaSonic =
-    getTextModel().modelId.includes('nova-sonic') &&
+    sessionTextModel.modelId.includes('nova-sonic') &&
     modeRef.current === ChatMode.Text;
 
   const [messages, setMessages] = useState<SwiftChatMessage[]>([]);
@@ -171,7 +180,9 @@ function ChatScreen(): React.JSX.Element {
     messagesRef.current = messages;
     chatStatusRef.current = chatStatus;
     usageRef.current = usage;
-  }, [chatStatus, messages, usage]);
+    sessionTextModelRef.current = sessionTextModel;
+    sessionImageModelRef.current = sessionImageModel;
+  }, [chatStatus, messages, usage, sessionTextModel, sessionImageModel]);
 
   useEffect(() => {
     drawerTypeRef.current = drawerType;
@@ -305,13 +316,26 @@ function ChatScreen(): React.JSX.Element {
         startNewChat.current();
         return;
       }
-      // click from history
+      // click from history - restore session models
       setMessages([]);
       isNewChatRef.current = false;
       endVoiceConversationRef.current?.();
       setIsLoadingMessages(true);
       const msg = getMessagesBySessionId(initialSessionId);
       sessionIdRef.current = initialSessionId;
+
+      // 恢复会话的模型配置
+      const chatList = getMessageList();
+      const currentChat = chatList.find(chat => chat.id === initialSessionId);
+      if (currentChat) {
+        if (currentChat.textModel) {
+          setSessionTextModel(currentChat.textModel);
+        }
+        if (currentChat.imageModel) {
+          setSessionImageModel(currentChat.imageModel);
+        }
+      }
+
       setUsage(msg.length > 0 ? (msg[0] as SwiftChatMessage).usage : undefined);
       setSystemPrompt(null);
       saveCurrentSystemPrompt(null);
@@ -698,7 +722,7 @@ function ChatScreen(): React.JSX.Element {
         bedrockMessages.current.push(currentMsg);
         setChatStatus(ChatStatus.Running);
         setMessages(previousMessages => [
-          createBotMessage(modeRef.current),
+          createBotMessage(modeRef.current, sessionTextModelRef.current, sessionImageModelRef.current),
           ...GiftedChat.append(previousMessages, message),
         ]);
       });
@@ -913,7 +937,7 @@ function ChatScreen(): React.JSX.Element {
                       bedrockMessages.current = [userMsg];
                       setChatStatus(ChatStatus.Running);
                       setMessages(previousMessages => [
-                        createBotMessage(modeRef.current),
+                        createBotMessage(modeRef.current, sessionTextModelRef.current, sessionImageModelRef.current),
                         ...previousMessages.slice(userMessageIndex),
                       ]);
                     }

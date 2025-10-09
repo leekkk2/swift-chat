@@ -6,6 +6,8 @@ export type Chat = {
   title: string;
   mode: string;
   timestamp: number;
+  textModel?: Model;
+  imageModel?: Model;
 };
 
 export enum ChatStatus {

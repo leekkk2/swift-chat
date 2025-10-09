@@ -264,12 +264,14 @@ export function saveMessageList(sessionId: number, firstMessage: SwiftChatMessag
   // 获取现有的消息列表字符串
   let allMessageStr = getMessageListStr();
 
-  // 创建新的聊天记录项
+  // 创建新的聊天记录项，包含当前使用的模型信息
   const currentMessageStr = JSON.stringify({
     id: sessionId,
     title: firstMessage.text.substring(0, 50).replaceAll('\n', ' '),
     mode: chatMode.toString(),
     timestamp: (firstMessage.createdAt as Date).getTime(),
+    textModel: currentSelectedTextModel || getTextModel(),
+    imageModel: currentSelectedImageModel || getImageModel(),
   });
 
   // 添加到消息列表（原始格式：无开头的 [）
